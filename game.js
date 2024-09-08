@@ -7,6 +7,7 @@ const winningCombos = [
   [0, 4, 8], [2, 4, 6] // Diagonals
 ];
 
+// Check for a winner
 function checkWinner() {
   for (let combo of winningCombos) {
     const [a, b, c] = combo;
@@ -17,6 +18,7 @@ function checkWinner() {
   return board.includes('') ? null : 'Tie';
 }
 
+// Display the winner in a modal
 function showWinner(winner) {
   const modal = document.getElementById('winner-modal');
   const message = document.getElementById('winner-message');
@@ -25,9 +27,12 @@ function showWinner(winner) {
   } else {
     message.textContent = `${winner} Wins!`;
   }
-  modal.style.display = 'block';
+  setTimeout(() => {
+    modal.style.display = 'block';
+  }, 500); // Slight delay for the modal to appear
 }
 
+// Handle cell click
 function handleClick(event) {
   const index = Array.from(cells).indexOf(event.target);
   if (board[index] || checkWinner()) return;
@@ -39,9 +44,12 @@ function handleClick(event) {
     showWinner(winner);
     return;
   }
+
   currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+  document.getElementById('player-turn').textContent = `Player ${currentPlayer}'s turn`;
 }
 
+// Add click event listeners to cells
 cells.forEach(cell => {
   cell.addEventListener('click', handleClick);
 });
