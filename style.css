@@ -14,10 +14,10 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 300px;
+  text-align: center;
 }
 
 h2 {
-  text-align: center;
   margin-bottom: 20px;
 }
 
@@ -48,7 +48,6 @@ button:hover {
 
 a {
   display: block;
-  text-align: center;
   margin-top: 10px;
   color: #007bff;
   text-decoration: none;
