@@ -51,10 +51,7 @@ function draw() {
 }
 
 function eatApple() {
-  if (snake[0].x === apple.x && snake[0].y === apple.y) {
-    return true;
-  }
-  return false;
+  return snake[0].x === apple.x && snake[0].y === apple.y;
 }
 
 function extendSnake() {
@@ -72,10 +69,7 @@ function checkCollision() {
       return true;
     }
   }
-  if (snake[0].x < 0 || snake[0].x >= canvas.width || snake[0].y < 0 || snake[0].y >= canvas.height) {
-    return true;
-  }
-  return false;
+  return snake[0].x < 0 || snake[0].x >= canvas.width || snake[0].y < 0 || snake[0].y >= canvas.height;
 }
 
 // Handle keyboard input
@@ -112,8 +106,14 @@ document.getElementById('right').addEventListener('touchstart', () => {
   if (dx === 0) { dx = grid; dy = 0; }
 });
 
+// Back button functionality
 document.getElementById('back-button').addEventListener('click', () => {
   window.location.href = 'game.html'; // Go back to the Tic-Tac-Toe game
+});
+
+// Next button functionality
+document.getElementById('next-button').addEventListener('click', () => {
+  window.location.href = 'nextgame.html'; // Replace with the URL of the next page/game
 });
 
 setInterval(gameLoop, 100);
