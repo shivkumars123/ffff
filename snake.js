@@ -106,14 +106,28 @@ document.getElementById('right').addEventListener('touchstart', () => {
   if (dx === 0) { dx = grid; dy = 0; }
 });
 
-// Back button functionality
+// Handle touch events for buttons
+function handleTouchEvent(event, callback) {
+  event.preventDefault(); // Prevent default touch behavior
+  callback();
+}
+
 document.getElementById('back-button').addEventListener('click', () => {
   window.location.href = 'game.html'; // Go back to the Tic-Tac-Toe game
 });
+document.getElementById('back-button').addEventListener('touchstart', (e) => {
+  handleTouchEvent(e, () => {
+    window.location.href = 'game.html'; // Go back to the Tic-Tac-Toe game
+  });
+});
 
-// Next button functionality
 document.getElementById('next-button').addEventListener('click', () => {
   window.location.href = 'nextgame.html'; // Replace with the URL of the next page/game
+});
+document.getElementById('next-button').addEventListener('touchstart', (e) => {
+  handleTouchEvent(e, () => {
+    window.location.href = 'nextgame.html'; // Replace with the URL of the next page/game
+  });
 });
 
 setInterval(gameLoop, 100);
