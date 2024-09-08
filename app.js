@@ -2,6 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
 
+
 // Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyC9y0yvTAkO27Eb5mSbnMgdtERTcLobOK4",
@@ -68,17 +69,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
   }
-
-  // Game Logic
-  const cells = document.querySelectorAll('.cell');
-  let currentPlayer = 'X';
-
-  cells.forEach(cell => {
-    cell.addEventListener('click', () => {
-      if (cell.innerText === '') {
-        cell.innerText = currentPlayer;
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-      }
-    });
-  });
 });

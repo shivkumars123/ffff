@@ -1,4 +1,3 @@
-// Game Logic for Tic-Tac-Toe
 const cells = document.querySelectorAll('.cell');
 let currentPlayer = 'X';
 let board = ['', '', '', '', '', '', '', '', ''];
@@ -55,5 +54,5 @@ closeModal.onclick = function() {
 
 // Log Out
 document.getElementById('logout-button').addEventListener('click', () => {
-  logout();
+  window.location.href = 'index.html';
 });
