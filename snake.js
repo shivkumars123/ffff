@@ -1,73 +1,119 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-const box = 20;
-let snake = [];
-snake[0] = { x: 9 * box, y: 10 * box };
-let food = {
-  x: Math.floor(Math.random() * 19 + 1) * box,
-  y: Math.floor(Math.random() * 19 + 1) * box
-};
-let d;
 
-// Control the snake
-document.addEventListener('keydown', direction);
+const grid = 20;
+let count = 0;
+let snake = [{ x: 160, y: 160 }];
+let apple = { x: 200, y: 200 };
+let dx = grid;
+let dy = 0;
+let changingDirection = false;
+let gameOver = false;
 
-function direction(event) {
-  if (event.keyCode === 37 && d !== 'RIGHT') d = 'LEFT';
-  else if (event.keyCode === 38 && d !== 'DOWN') d = 'UP';
-  else if (event.keyCode === 39 && d !== 'LEFT') d = 'RIGHT';
-  else if (event.keyCode === 40 && d !== 'UP') d = 'DOWN';
+function gameLoop() {
+  if (gameOver) return;
+
+  changingDirection = false;
+  count++;
+
+  if (count >= 4) {
+    count = 0;
+    moveSnake();
+    if (checkCollision()) {
+      gameOver = true;
+      alert('Game Over');
+      return;
+    }
+    if (eatApple()) {
+      extendSnake();
+      placeApple();
+    }
+    draw();
+  }
 }
 
-// Draw everything
+function moveSnake() {
+  const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+  snake.unshift(head);
+  snake.pop();
+}
+
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (let i = 0; i < snake.length; i++) {
-    ctx.fillStyle = i === 0 ? 'green' : 'lightgreen';
-    ctx.fillRect(snake[i].x, snake[i].y, box, box);
-  }
+
+  // Draw snake
+  ctx.fillStyle = 'green';
+  snake.forEach(part => ctx.fillRect(part.x, part.y, grid, grid));
+
+  // Draw apple
   ctx.fillStyle = 'red';
-  ctx.fillRect(food.x, food.y, box, box);
-
-  let snakeX = snake[0].x;
-  let snakeY = snake[0].y;
-
-  if (d === 'LEFT') snakeX -= box;
-  if (d === 'UP') snakeY -= box;
-  if (d === 'RIGHT') snakeX += box;
-  if (d === 'DOWN') snakeY += box;
-
-  if (snakeX === food.x && snakeY === food.y) {
-    food = {
-      x: Math.floor(Math.random() * 19 + 1) * box,
-      y: Math.floor(Math.random() * 19 + 1) * box
-    };
-  } else {
-    snake.pop();
-  }
-
-  const newHead = {
-    x: snakeX,
-    y: snakeY
-  };
-
-  if (collision(newHead, snake)) clearInterval(game);
-  snake.unshift(newHead);
-
-  if (snakeX < 0 || snakeX >= canvas.width || snakeY < 0 || snakeY >= canvas.height) clearInterval(game);
+  ctx.fillRect(apple.x, apple.y, grid, grid);
 }
 
-// Collision detection
-function collision(head, array) {
-  for (let i = 0; i < array.length; i++) {
-    if (head.x === array[i].x && head.y === array[i].y) return true;
+function eatApple() {
+  if (snake[0].x === apple.x && snake[0].y === apple.y) {
+    return true;
   }
   return false;
 }
 
-const game = setInterval(draw, 100);
+function extendSnake() {
+  snake.push({...snake[snake.length - 1]});
+}
 
-// Handle Back Button
-document.getElementById('back-button').addEventListener('click', () => {
-  window.location.href = 'game.html'; // Adjust this path as needed
+function placeApple() {
+  apple.x = Math.floor(Math.random() * (canvas.width / grid)) * grid;
+  apple.y = Math.floor(Math.random() * (canvas.height / grid)) * grid;
+}
+
+function checkCollision() {
+  for (let i = 1; i < snake.length; i++) {
+    if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) {
+      return true;
+    }
+  }
+  if (snake[0].x < 0 || snake[0].x >= canvas.width || snake[0].y < 0 || snake[0].y >= canvas.height) {
+    return true;
+  }
+  return false;
+}
+
+// Handle keyboard input
+window.addEventListener('keydown', (e) => {
+  if (changingDirection) return;
+  changingDirection = true;
+  switch (e.code) {
+    case 'ArrowUp':
+      if (dy === 0) { dx = 0; dy = -grid; }
+      break;
+    case 'ArrowDown':
+      if (dy === 0) { dx = 0; dy = grid; }
+      break;
+    case 'ArrowLeft':
+      if (dx === 0) { dx = -grid; dy = 0; }
+      break;
+    case 'ArrowRight':
+      if (dx === 0) { dx = grid; dy = 0; }
+      break;
+  }
 });
+
+// Handle touch controls
+document.getElementById('up').addEventListener('touchstart', () => {
+  if (dy === 0) { dx = 0; dy = -grid; }
+});
+document.getElementById('down').addEventListener('touchstart', () => {
+  if (dy === 0) { dx = 0; dy = grid; }
+});
+document.getElementById('left').addEventListener('touchstart', () => {
+  if (dx === 0) { dx = -grid; dy = 0; }
+});
+document.getElementById('right').addEventListener('touchstart', () => {
+  if (dx === 0) { dx = grid; dy = 0; }
+});
+
+document.getElementById('back-button').addEventListener('click', () => {
+  window.location.href = 'game.html'; // Go back to the Tic-Tac-Toe game
+});
+
+setInterval(gameLoop, 100);

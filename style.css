@@ -1,59 +1,40 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
+  background-color: #f0f0f0;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   height: 100vh;
   margin: 0;
 }
 
-#signup-page, #login-page {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
+canvas {
+  background: #000;
+  display: block;
+  margin: 20px auto;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-form {
+.controls {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
 }
 
-input {
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-button {
-  padding: 10px;
-  background-color: #28a745;
-  color: white;
-  border: none;
+.control-button {
+  width: 50px;
+  height: 50px;
+  background: #666;
+  border: 1px solid #333;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  margin: 5px;
   border-radius: 5px;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #218838;
-}
-
-a {
-  display: block;
-  text-align: center;
-  margin-top: 10px;
-  color: #007bff;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
+.control-button:hover {
+  background: #444;
 }
