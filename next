@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Next Game</title>
+  <link rel="stylesheet" href="next-game.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Welcome to the Next Game!</h1>
+    </header>
+    
+    <section class="playlists">
+      <p>Explore these playlists to enhance your skills and enjoy some great content:</p>
+      
+      <div class="playlist">
+        <h2>🎶 Music Playlists</h2>
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Rick Astley - Never Gonna Give You Up</a></li>
+          <li><a href="https://www.youtube.com/watch?v=3JZ_D3ELwOQ" target="_blank">Mark Ronson - Uptown Funk ft. Bruno Mars</a></li>
+        </ul>
+      </div>
+      
+      <div class="playlist">
+        <h2>💻 Coding & DSA</h2>
+        <ul>
+          <li><a href="https://www.youtube.com/playlist?list=PLQvWROTrEIRuHLhDLZmiTwO1Cr6U9lNqD" target="_blank">DSA Course - CodeWithHarry</a></li>
+          <li><a href="https://www.youtube.com/playlist?list=PL2aEoM6s_n34P44bG_O9rOfhP7gVq4jbB" target="_blank">JavaScript Essentials - Traversy Media</a></li>
+        </ul>
+      </div>
+      
+      <div class="playlist">
+        <h2>🎸 Guitar Lessons</h2>
+        <ul>
+          <li><a href="https://www.youtube.com/playlist?list=PLH6BvlgZ39uznSnqgUyyEbEVsRksQ_1rJ" target="_blank">Beginner Guitar Lessons - Marty Music</a></li>
+          <li><a href="https://www.youtube.com/playlist?list=PLRmLOqh6u6im5rwWYmOMd8K2rF_vM0Msl" target="_blank">Intermediate Guitar Techniques - Guitar Lessons 365</a></li>
+        </ul>
+      </div>
+      
+      <div class="playlist">
+        <h2>📚 Good Stuff</h2>
+        <ul>
+          <li><a href="https://www.youtube.com/playlist?list=PL5-sXqk0n60O6iDA43kvI-w1w1vJRL6UO" target="_blank">Personal Development - Thomas Frank</a></li>
+          <li><a href="https://www.youtube.com/playlist?list=PLhK7i9kxlz12HoENztyz1P_0wwGb8TRzu" target="_blank">Motivational Talks - MotivationHub</a></li>
+        </ul>
+      </div>
+    </section>
+    
+    <footer>
+      <button onclick="window.location.href='snake.html'">Back to Snake Game</button>
+    </footer>
+  </div>
+</body>
+</html>

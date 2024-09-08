@@ -4,33 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Next Game</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 20px;
-    }
-    .video-link {
-      margin: 20px;
-    }
-    .video-link a {
-      color: #007bff;
-      text-decoration: none;
-    }
-    .video-link a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <link rel="stylesheet" href="next-game.css">
 </head>
 <body>
-  <h1>Welcome to the Next Game!</h1>
-  <p>Here are some videos you might enjoy:</p>
-  <div class="video-link">
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Song 1: Rick Astley - Never Gonna Give You Up</a>
+  <div class="container">
+    <header>
+      <h1>Welcome to the Next Game!</h1>
+    </header>
+    
+    <section class="playlists">
+      <p>Explore these playlists to enhance your skills and enjoy some great content:</p>
+      
+      <div class="playlist">
+        <h2>🎶 Music Playlists</h2>
+        <ul>
+          <li><a href="https://open.spotify.com/playlist/4HPnPhicUz5Tpx12O1aFcM?si=cd2e0b31ee0649de" target="_blank">Relaxing Music for Coding - Chill Study Beats</a></li>
+          <li><a href="https://open.spotify.com/playlist/4HPnPhicUz5Tpx12O1aFcM?si=cd2e0b31ee0649de" target="_blank">Top 100 Most Viewed Songs of All Time</a></li>
+        </ul>
+      </div>
+      
+      <div class="playlist">
+        <h2>💻 Coding & DSA</h2>
+        <ul>
+          <li><a href="https://www.placementpreparation.io/blog/best-youtube-channels-to-learn-data-structures-and-algorithms/" target="_blank">Data Structures and Algorithms - GeeksforGeeks</a></li>
+          <li><a href="https://www.analyticsinsight.net/youtube-channels-for-mastering-data-structures-and-algorithms/" target="_blank">JavaScript Algorithms and Data Structures - FreeCodeCamp</a></li>
+        </ul>
+      </div>
+      
+      <div class="playlist">
+        <h2>🎸 Guitar Lessons</h2>
+        <ul>
+          <li><a href="https://www.youtube.com/playlist?list=PLiyMO_9U8g1BNzo7ZoXwKg2Pqt5chP6CT" target="_blank">Beginner Guitar Lessons - JustinGuitar</a></li>
+          <li><a href="https://www.youtube.com/playlist?list=PLiyMO_9U8g1BNzo7ZoXwKg2Pqt5chP6CT" target="_blank">Intermediate Guitar Lessons - GuitarLessons.com</a></li>
+        </ul>
+      </div>
+      
+      <div class="playlist">
+        <h2>📚 Good Stuff</h2>
+        <ul>
+          <li><a href="https://open.spotify.com/playlist/6EliGOxgmoGFaubaCK3dxl?si=7f8207e36064488b" target="_blank">Personal Development - Improvement Pill</a></li>
+          <li><a href="https://open.spotify.com/playlist/4HPnPhicUz5Tpx12O1aFcM?si=cd2e0b31ee0649de" target="_blank">Motivational Talks - MotivationHub</a></li>
+        </ul>
+      </div>
+    </section>
+    
+    <footer>
+      <button onclick="window.location.href='snake.html'">Back to Snake Game</button>
+    </footer>
   </div>
-  <div class="video-link">
-    <a href="https://www.youtube.com/watch?v=3JZ_D3ELwOQ" target="_blank">Song 2: Mark Ronson - Uptown Funk ft. Bruno Mars</a>
-  </div>
-  <button onclick="window.location.href='snake.html'">Back to Snake Game</button>
 </body>
 </html>
