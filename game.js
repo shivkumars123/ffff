@@ -60,6 +60,19 @@ closeModal.onclick = function() {
   document.getElementById('winner-modal').style.display = 'none';
 }
 
+// Replay button functionality
+const replayButton = document.getElementById('replay-button');
+replayButton.onclick = function() {
+  board = ['', '', '', '', '', '', '', '', ''];
+  currentPlayer = 'X';
+  document.getElementById('player-turn').textContent = `Player ${currentPlayer}'s turn`;
+  cells.forEach(cell => {
+    cell.textContent = '';
+    cell.classList.remove('active'); // Remove active class for visual reset
+  });
+  document.getElementById('winner-modal').style.display = 'none';
+}
+
 // Log Out
 document.getElementById('logout-button').addEventListener('click', () => {
   window.location.href = 'index.html';
