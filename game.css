@@ -1,49 +1,37 @@
-/* Enhanced Game Board Styling */
+/* General Styles for Game Board */
 .game-board {
   display: grid;
-  grid-template-columns: repeat(3, 150px); /* Larger cells */
-  grid-template-rows: repeat(3, 150px);
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
   gap: 10px;
-  background: #ffffff;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
 }
 
+/* Style for each cell in the game board */
 .cell {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 3em;
-  border: 2px solid #4a90e2; /* Modern blue border */
-  background: #f0f4f8; /* Lighter background */
+  border: 2px solid #333;
+  background: #f8f9fa;
   cursor: pointer;
-  border-radius: 8px;
-  transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+  transition: background-color 0.3s;
 }
 
-.cell:hover {
-  background-color: #e6f7ff; /* Background color on hover */
-  transform: scale(1.05); /* Slight enlargement on hover */
+/* Style for winning cells */
+.cell.winner {
+  background-color: #dff0d8; /* Light green background for the winner cells */
+  color: #3c763d; /* Dark green color for the winner text */
 }
 
-.cell.active {
-  background-color: #b8e2ff;
-  font-weight: bold;
-  transform: scale(1.1); /* Bounce effect */
-}
-
-/* Player Turn Indicator */
-#player-turn {
-  margin-bottom: 15px;
-  font-size: 1.2em;
-  color: #333;
-}
-
-/* Modal Styling */
+/* Modal Styles */
 .modal {
   display: none;
   position: fixed;
@@ -53,56 +41,60 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
 }
 
+/* Modal Content Styles */
 .modal-content {
-  background-color: #ffffff;
-  margin: 10% auto;
-  padding: 30px;
-  border: 2px solid #4a90e2;
-  width: 90%;
-  max-width: 350px;
-  border-radius: 12px;
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 300px;
+  border-radius: 8px;
   text-align: center;
-  animation: fadeIn 0.5s ease-in-out;
+  position: relative;
 }
 
+/* Close Button Styles */
 .close {
   color: #aaa;
   float: right;
   font-size: 28px;
+  font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
   color: black;
+  text-decoration: none;
   cursor: pointer;
 }
 
-/* Animation for Modal */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+/* Button Styles */
+button {
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  margin: 10px;
+  transition: background-color 0.3s;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .game-board {
-    grid-template-columns: repeat(3, 80px);
-    grid-template-rows: repeat(3, 80px);
-  }
+button:hover {
+  background-color: #218838;
+}
 
-  .cell {
-    width: 80px;
-    height: 80px;
-    font-size: 2em;
-  }
+button:disabled {
+  background-color: #c6c6c6;
+  cursor: not-allowed;
+}
 
-  .modal-content {
-    width: 80%;
-  }
+/* Styles for the winning line indicator */
+.winner-line {
+  border: 2px solid #3c763d; /* Green border for the winning line */
 }
